@@ -96,6 +96,18 @@ public class AdminController {
         return "redirect:/admin/tickets";
     }
 
+    @GetMapping("/admin/ticket/update/{id}")
+    public String updateTicket(@PathVariable long id, Model model){
+        Tickets ticket = ticketService.getTicketById(id).get();
+        ticket.setId(ticket.getId());
+        ticket.setArtists(ticket.getArtists());
+        ticket.setDate(ticket.getDate());
+        ticket.setPlace(ticket.getPlace());
+        ticket.setPrice(ticket.getPrice());
+        ticketService.addTicket(ticket);
+        return "redirect:/admin/tickets";
+    }
+
     @GetMapping("/admin/tickets/delete/{id}")
     public String deleteTicket(@PathVariable long id){
         ticketService.removeTicketById(id);

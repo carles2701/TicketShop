@@ -28,11 +28,19 @@ public class HomePageController {
         return "index";
     }
 
-    @GetMapping("/shop")
-    public String shop(Model model, @PathVariable long id){
+    @GetMapping("/shop/artist/{id}")
+    public String shopByArtist(Model model, @PathVariable long id){
         model.addAttribute("ticketsByArtists",ticketService.getAllTicketsByArtistId(id));
         model.addAttribute("shoppingCart", ShoppingCart.shoppingCart.size());
-        model.addAttribute("tickets", ticketService.getAllTickets());
+        model.addAttribute("artists", artistService.getAllArtists());
+        return "shopPage";
+    }
+
+    @GetMapping("/shop")
+    public String shop(Model model){
+        model.addAttribute("shoppingCart",ShoppingCart.shoppingCart.size());
+        model.addAttribute("artists",artistService.getAllArtists());
+        model.addAttribute("tickets",ticketService.getAllTickets());
         return "shopPage";
     }
 

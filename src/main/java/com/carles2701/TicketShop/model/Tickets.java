@@ -1,17 +1,18 @@
 package com.carles2701.TicketShop.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
 public class Tickets {
 
     @Id
+    @Column(name = "ticket_id")
     private long id;
     @Column(nullable = false)
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "artist_id",referencedColumnName = "artist_id")
     private Artists artists;
     @Column(nullable = false)
     private String place;
