@@ -17,7 +17,11 @@ public class Tickets {
     @Column(nullable = false)
     private String place;
     @Column(nullable = false)
-    private String date;
+    private String date_year;
+    @Column(nullable = false)
+    private String date_month;
+    @Column(nullable = false)
+    private String date_day;
     @Column(nullable = false)
     private double price;
 
@@ -25,10 +29,13 @@ public class Tickets {
 
     }
 
-    public Tickets(Artists artists, String place, String date, double price) {
+    public Tickets(long id, Artists artists, String place, String date_year, String date_month, String date_day, double price) {
+        this.id = id;
         this.artists = artists;
         this.place = place;
-        this.date = date;
+        this.date_year = date_year;
+        this.date_month = date_month;
+        this.date_day = date_day;
         this.price = price;
     }
 
@@ -56,12 +63,28 @@ public class Tickets {
         this.place = place;
     }
 
-    public String getDate() {
-        return date;
+    public String getDate_year() {
+        return date_year;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate_year(String date_year) {
+        this.date_year = date_year;
+    }
+
+    public String getDate_month() {
+        return date_month;
+    }
+
+    public void setDate_month(String date_month) {
+        this.date_month = date_month;
+    }
+
+    public String getDate_day() {
+        return date_day;
+    }
+
+    public void setDate_day(String date_day) {
+        this.date_day = date_day;
     }
 
     public double getPrice() {

@@ -40,12 +40,12 @@ public class AdminController {
 
     @GetMapping("/admin/artists/add")
     public String getArtistsAdd(Model model){
-        model.addAttribute("artists", new Artists());
+        model.addAttribute("artist", new Artists());
         return "artistAddPage";
     }
 
     @PostMapping("/admin/artists/add")
-    public String postArtistsAdd(@ModelAttribute("category")Artists artist){
+    public String postArtistsAdd(@ModelAttribute("artist")Artists artist){
         artistService.addArtist(artist);
         return "redirect:/admin/artists";
     }
@@ -69,7 +69,7 @@ public class AdminController {
     @GetMapping("/admin/users")
     public String getUsers(Model model){
         model.addAttribute("existing_users", userService.getAllUsers());
-        return "usersPage";
+        return "userPage";
     }
 
     @GetMapping("/admin/users/delete/{id}")
@@ -81,7 +81,7 @@ public class AdminController {
     @GetMapping("/admin/tickets")
     public String getTickets(Model model){
         model.addAttribute("tickets", ticketService.getAllTickets());
-        return "ticketsPage";
+        return "ticketPage";
     }
 
     @GetMapping("/admin/tickets/add")
@@ -101,7 +101,9 @@ public class AdminController {
         Tickets ticket = ticketService.getTicketById(id).get();
         ticket.setId(ticket.getId());
         ticket.setArtists(ticket.getArtists());
-        ticket.setDate(ticket.getDate());
+        ticket.setDate_year(ticket.getDate_year());
+        ticket.setDate_month(ticket.getDate_month());
+        ticket.setDate_day(ticket.getDate_day());
         ticket.setPlace(ticket.getPlace());
         ticket.setPrice(ticket.getPrice());
         ticketService.addTicket(ticket);

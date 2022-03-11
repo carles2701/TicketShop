@@ -1,29 +1,33 @@
-#{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+header{
+position:fixed;
+display:block;
+}
 body{
+    position:absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100;
     text-align: center;
+    display:block;
 }
 .content{
     height: 400px;
-    width: 700px;
+    width: 400px;
     overflow: hidden;
     position: relative;
 }
 .content .images{
     height: 100%;
-    width: 100%;
 }
 
 .images img{
     height: 100%;
-    width: 100%;
 }
 
 .content .slide{
@@ -41,12 +45,21 @@ body{
     background: rgba(255,255,255,0.2);
 }
 
+.navbar-brand{
+    text-align: right;
+}
+.navbar-brand li{
+    display: inline-block;
+}
+
 .slide span{
     font-size: 35px;
     color: white;
     line-height: 41px;
 }
-
 .content .right{
     right: 0;
+}
+.elements{
+    display: block;
 }
