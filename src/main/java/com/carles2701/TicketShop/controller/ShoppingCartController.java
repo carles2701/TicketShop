@@ -13,7 +13,7 @@ public class ShoppingCartController {
     TicketService ticketService;
 
     @GetMapping("/addToCart/{id}")
-    public String addToShoppingCart(@PathVariable long id){
+    public String addToShoppingCart(@PathVariable int id){
         ShoppingCart.shoppingCart.add(ticketService.getTicketById(id).get());
         return "redirect:/shop";
     }

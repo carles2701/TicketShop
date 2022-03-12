@@ -1,12 +1,11 @@
 package com.carles2701.TicketShop.controller;
 
-import com.carles2701.TicketShop.model.Artists;
-import com.carles2701.TicketShop.model.Tickets;
+import com.carles2701.TicketShop.model.Artist;
+import com.carles2701.TicketShop.model.Ticket;
 import com.carles2701.TicketShop.service.ArtistService;
 import com.carles2701.TicketShop.service.TicketService;
 import com.carles2701.TicketShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,25 +39,25 @@ public class AdminController {
 
     @GetMapping("/admin/artists/add")
     public String getArtistsAdd(Model model){
-        model.addAttribute("artist", new Artists());
+        model.addAttribute("artist", new Artist());
         return "artistAddPage";
     }
 
     @PostMapping("/admin/artists/add")
-    public String postArtistsAdd(@ModelAttribute("artist")Artists artist){
+    public String postArtistsAdd(@ModelAttribute("artist") Artist artist){
         artistService.addArtist(artist);
         return "redirect:/admin/artists";
     }
 
     @GetMapping("/admin/artists/delete/{id}")
-    public String deleteArtist(@PathVariable long id){
+    public String deleteArtist(@PathVariable int id){
         artistService.removeArtistById(id);
         return "redirect:/admin/artists";
     }
 
     @GetMapping("/admin/artists/update/{id}")
-    public String updateArtist(@PathVariable long id, Model model){
-        Artists artist = artistService.getArtistById(id).get();
+    public String updateArtist(@PathVariable int id, Model model){
+        Artist artist = artistService.getArtistById(id).get();
         artist.setId(artist.getId());
         artist.setGenre(artist.getGenre());
         artist.setKnownAs(artist.getKnownAs());
@@ -73,7 +72,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin/users/delete/{id}")
-    public String deleteUser(@PathVariable long id){
+    public String deleteUser(@PathVariable int id){
         userService.removeUserById(id);
         return "redirect:/admin/users";
     }
@@ -86,21 +85,21 @@ public class AdminController {
 
     @GetMapping("/admin/tickets/add")
     public String getAddTicket(Model model){
-        model.addAttribute("tickets", new Tickets());
+        model.addAttribute("tickets", new Ticket());
         return "ticketAddPage";
     }
 
     @PostMapping("/admin/tickets/add")
-    public String postAddTicket(@ModelAttribute("ticket") Tickets ticket){
+    public String postAddTicket(@ModelAttribute("ticket") Ticket ticket){
         ticketService.addTicket(ticket);
         return "redirect:/admin/tickets";
     }
 
     @GetMapping("/admin/ticket/update/{id}")
-    public String updateTicket(@PathVariable long id, Model model){
-        Tickets ticket = ticketService.getTicketById(id).get();
+    public String updateTicket(@PathVariable int id, Model model){
+        Ticket ticket = ticketService.getTicketById(id).get();
         ticket.setId(ticket.getId());
-        ticket.setArtists(ticket.getArtists());
+        ticket.setArtist(ticket.getArtist());
         ticket.setDate_year(ticket.getDate_year());
         ticket.setDate_month(ticket.getDate_month());
         ticket.setDate_day(ticket.getDate_day());
@@ -111,7 +110,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin/tickets/delete/{id}")
-    public String deleteTicket(@PathVariable long id){
+    public String deleteTicket(@PathVariable int id){
         ticketService.removeTicketById(id);
         return "redirect:/admin/tickets";
     }

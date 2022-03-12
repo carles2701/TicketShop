@@ -3,17 +3,17 @@ package com.carles2701.TicketShop.model;
 import javax.persistence.*;
 
 @Entity
-@Table
-public class Tickets {
+public class Ticket {
 
     @Id
     @Column(name = "ticket_id")
-    private long id;
+    private int id;
     @Column(nullable = false)
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "artist_id",referencedColumnName = "artist_id")
-    private Artists artists;
+    @JoinColumn(name = "artist_id", referencedColumnName = "artist_id")
+    private Artist artist;
+
     @Column(nullable = false)
     private String place;
     @Column(nullable = false)
@@ -25,13 +25,13 @@ public class Tickets {
     @Column(nullable = false)
     private double price;
 
-    public Tickets(){
+    public Ticket(){
 
     }
 
-    public Tickets(long id, Artists artists, String place, String date_year, String date_month, String date_day, double price) {
+    public Ticket(int id, Artist artist, String place, String date_year, String date_month, String date_day, double price) {
         this.id = id;
-        this.artists = artists;
+        this.artist = artist;
         this.place = place;
         this.date_year = date_year;
         this.date_month = date_month;
@@ -39,20 +39,20 @@ public class Tickets {
         this.price = price;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Artists getArtists() {
-        return artists;
+    public Artist getArtist() {
+        return artist;
     }
 
-    public void setArtists(Artists artists) {
-        this.artists = artists;
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
     public String getPlace() {

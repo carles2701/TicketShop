@@ -1,6 +1,6 @@
 package com.carles2701.TicketShop.service;
 
-import com.carles2701.TicketShop.model.Tickets;
+import com.carles2701.TicketShop.model.Ticket;
 import com.carles2701.TicketShop.repository.TicketsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,19 +14,19 @@ public class TicketService {
     @Autowired
     TicketsRepository ticketsRepository;
 
-    public List<Tickets> getAllTickets(){
+    public List<Ticket> getAllTickets(){
         return ticketsRepository.findAll();
     }
-    public void addTicket(Tickets ticket){
+    public void addTicket(Ticket ticket){
         ticketsRepository.save(ticket);
     }
-    public void removeTicketById(long id){
+    public void removeTicketById(int id){
         ticketsRepository.deleteById(id);
     }
-    public Optional<Tickets> getTicketById(long id){
+    public Optional<Ticket> getTicketById(int id){
         return ticketsRepository.findById(id);
     }
-    public List<Tickets>getAllTicketsByArtistId(long id){
+    public List<Ticket>getAllTicketsByArtistId(int id){
         return ticketsRepository.findAllByArtist_Id(id);
     }
 }

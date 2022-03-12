@@ -1,6 +1,6 @@
 package com.carles2701.TicketShop.service;
 
-import com.carles2701.TicketShop.model.Users;
+import com.carles2701.TicketShop.model.User;
 import com.carles2701.TicketShop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,16 +14,16 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public List<Users> getAllUsers(){
+    public List<User> getAllUsers(){
         return userRepository.findAll();
     }
-    public void addUser(Users user){
+    public void addUser(User user){
         userRepository.save(user);
     }
-    public void removeUserById(long id){
+    public void removeUserById(int id){
         userRepository.deleteById(id);
     }
-    public Optional<Users> getUserById(long id){
+    public Optional<User> getUserById(int id){
         return userRepository.findById(id);
     }
 }

@@ -3,32 +3,32 @@ package com.carles2701.TicketShop.model;
 import javax.persistence.*;
 
 @Entity
-@Table
-public class Artists {
+public class Artist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "artist_id")
-    private long id;
+    private int id;
     @Column(nullable = false)
     private String knownAs;
     @Column(nullable = false)
     private String genre;
 
-    public Artists(){
+    public Artist(){
 
     }
 
-    public Artists(String knownAs, String genre) {
+    public Artist(int id, String knownAs, String genre) {
+        this.id = id;
         this.knownAs = knownAs;
         this.genre = genre;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -48,4 +48,3 @@ public class Artists {
         this.genre = genre;
     }
 }
-

@@ -1,13 +1,13 @@
 package com.carles2701.TicketShop.globalCart;
 
-import com.carles2701.TicketShop.model.Tickets;
+import com.carles2701.TicketShop.model.Ticket;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    public static List<Tickets> shoppingCart;
+    public static List<Ticket> shoppingCart;
     static {
-        shoppingCart = new ArrayList<Tickets>();
+        shoppingCart = new ArrayList<Ticket>();
     }
 }

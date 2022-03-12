@@ -6,12 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
-public class Users {
+public class User {
 
     @Id
     @Column(name = "user_id")
-    private long id;
+    private int id;
     @Column(nullable = false)
     private String login;
     @Column(nullable = false)
@@ -21,21 +20,21 @@ public class Users {
     @Column(nullable = false)
     private String email;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(String login, String firstName, String lastName, String email) {
+    public User(String login, String firstName, String lastName, String email) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

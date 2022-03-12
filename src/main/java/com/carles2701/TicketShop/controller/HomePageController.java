@@ -29,7 +29,7 @@ public class HomePageController {
     }
 
     @GetMapping("/shop/artist/{id}")
-    public String shopByArtist(Model model, @PathVariable long id){
+    public String shopByArtist(Model model, @PathVariable int id){
         model.addAttribute("ticketsByArtists",ticketService.getAllTicketsByArtistId(id));
         model.addAttribute("shoppingCart", ShoppingCart.shoppingCart.size());
         model.addAttribute("artists", artistService.getAllArtists());
@@ -45,7 +45,7 @@ public class HomePageController {
     }
 
     @GetMapping("/shop/viewproduct/{id}")
-    public String viewProduct(Model model, @PathVariable long id){
+    public String viewProduct(Model model, @PathVariable int id){
         model.addAttribute("ticket", ticketService.getTicketById(id).get());
         model.addAttribute("shoppingCart", ShoppingCart.shoppingCart.size());
         return "viewProductPage";

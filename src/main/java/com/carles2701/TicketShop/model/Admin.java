@@ -3,13 +3,12 @@ package com.carles2701.TicketShop.model;
 import javax.persistence.*;
 
 @Entity
-@Table
-public class Admins {
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "admin_id")
-    private long id;
+    private int id;
     @Column(nullable = false)
     private String login;
     @Column(nullable = false)
@@ -19,21 +18,22 @@ public class Admins {
     @Column(nullable = false)
     private String email;
 
-    public Admins() {
+    public Admin() {
     }
 
-    public Admins(String login, String firstName, String lastName, String email) {
+    public Admin(int id, String login, String firstName, String lastName, String email) {
+        this.id = id;
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
