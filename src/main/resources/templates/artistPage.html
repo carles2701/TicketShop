@@ -57,8 +57,8 @@
             <td th:text="${artist.knownAs}">Taco Hemingway</td>
             <td th:text="${artist.genre}">Hip Hop</td>
 
-            <td><a href="" th:href="@{/admin/artists/delete/{id}(id=${artist_id})}" class="btn btn-danger">Delete Artist from DB</a></td>
-            <td><a href="" th:href="@{/admin/artists/update/{id}(id=${artist_id})}" class="btn btn-warning">Modify Artist</a></td>
+            <td><a href="" th:href="@{/admin/artists/delete/{id}(id=${artist.id})}" class="btn btn-danger">Delete Artist from DB</a></td>
+            <td><a href="" th:href="@{/admin/artists/update/{id}(id=${artist.id})}" class="btn btn-warning">Modify Artist</a></td>
 
         </tr>
         </tbody>

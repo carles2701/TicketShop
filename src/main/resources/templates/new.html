@@ -44,14 +44,14 @@
             <div class="col-sm-5">
                 <div class="form-group">
                     <label for="artist">Select Artist</label>
-                    <select class="form-control" th:field="*{artist}" id="artist" name="artist">
+                    <div class="form-control" th:field="*{artistId}" id="artist" name="artist">
                         <option th:each="artist :${artists}"
                                 th:value="${artist.id}"
                                 th:text="${artist.knownAs}"
                         >
-                        </select>
+                        </option>
                     </div>
-
+                </div>
                 <input type="hidden" name="id" th:field="*{id}">
                 <div class="form-group">
                     <label for="place">Place</label>
@@ -81,8 +81,10 @@
             </div>
 
 
+
+
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+
     </form>
 </div>
 </body>

@@ -16,7 +16,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/logo.png}"  src="../static/logo.png" width="auto" height="40" class="d-inline-block align-top" alt="" />
+            <img th:src="@{/logo.png}"  src="../static/logo.png" width="auto" height="40" class="d-inline-block align-top" alt="" th:href="@{/}"/>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
 </nav>
 <div class="container">
 
-    <a th:href="@{/admin/ticket/add}" style="margin: 20px 0" class="btn btn-primary">Add Ticket</a>
+    <a th:href="@{/admin/tickets/add}" style="margin: 20px 0" class="btn btn-primary">Add Ticket</a>
     <table class="table">
         <thead class="thead-light">
         <tr>
@@ -57,16 +57,16 @@
         <tbody>
 
         <tr th:each="ticket, iStat : ${tickets}">
-            <th scope="row" th:text="${iStat.index + 1}">1</th>
-            <td th:text="${ticket.artists}">Taco Hemingway</td>
-            <td th:text="${ticket.place}">Warsaw</td>
-            <td th:text="${ticket.date_year}">2022</td>
-            <td th:text="${ticket.date_month}">07</td>
-            <td th:text="${ticket.date_day}">15</td>
-            <td th:text="${ticket.price}">35.99</td>
+            <th scope="row" th:text="${iStat.index + 1}"></th>
+            <td th:text="${ticket.artist}"></td>
+            <td th:text="${ticket.place}"></td>
+            <td th:text="${ticket.date_year}"></td>
+            <td th:text="${ticket.date_month}"></td>
+            <td th:text="${ticket.date_day}"></td>
+            <td th:text="${ticket.price}"></td>
 
-            <td><a href="" th:href="@{/admin/ticket/delete/{id}(id=${artist_id})}" class="btn btn-danger">Delete Event from DB</a></td>
-            <td><a href="" th:href="@{/admin/ticket/update/{id}(id=${artist_id})}" class="btn btn-warning">Modify Event</a></td>
+            <td><a href="" th:href="@{/admin/ticket/delete/{id}(id=${ticket.id})}" class="btn btn-danger">Delete Event from DB</a></td>
+            <td><a href="" th:href="@{/admin/ticket/update/{id}(id=${ticket.id})}" class="btn btn-warning">Modify Event</a></td>
 
         </tr>
         </tbody>

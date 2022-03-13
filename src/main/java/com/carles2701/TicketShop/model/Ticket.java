@@ -8,12 +8,9 @@ public class Ticket {
     @Id
     @Column(name = "ticket_id")
     private int id;
-    @Column(nullable = false)
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "artist_id", referencedColumnName = "artist_id")
     private Artist artist;
-
     @Column(nullable = false)
     private String place;
     @Column(nullable = false)

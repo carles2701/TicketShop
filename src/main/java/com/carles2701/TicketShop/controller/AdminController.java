@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 @Controller
 public class AdminController {
 
@@ -57,12 +59,13 @@ public class AdminController {
 
     @GetMapping("/admin/artists/update/{id}")
     public String updateArtist(@PathVariable int id, Model model){
-        Artist artist = artistService.getArtistById(id).get();
-        artist.setId(artist.getId());
-        artist.setGenre(artist.getGenre());
-        artist.setKnownAs(artist.getKnownAs());
-        artistService.addArtist(artist);
-        return "redirect:/admin/artists";
+        Optional<Artist> artist = artistService.getArtistById(id);
+        if(artist.isPresent()) {
+            model.addAttribute("artist", artist.get());
+            return "artistAddPage";
+        }
+        else
+            return "404";
     }
 
     @GetMapping("/admin/users")
@@ -85,7 +88,8 @@ public class AdminController {
 
     @GetMapping("/admin/tickets/add")
     public String getAddTicket(Model model){
-        model.addAttribute("tickets", new Ticket());
+        model.addAttribute("ticket", new Ticket());
+        model.addAttribute("artists", artistService.getAllArtists());
         return "ticketAddPage";
     }
 
@@ -97,16 +101,13 @@ public class AdminController {
 
     @GetMapping("/admin/ticket/update/{id}")
     public String updateTicket(@PathVariable int id, Model model){
-        Ticket ticket = ticketService.getTicketById(id).get();
-        ticket.setId(ticket.getId());
-        ticket.setArtist(ticket.getArtist());
-        ticket.setDate_year(ticket.getDate_year());
-        ticket.setDate_month(ticket.getDate_month());
-        ticket.setDate_day(ticket.getDate_day());
-        ticket.setPlace(ticket.getPlace());
-        ticket.setPrice(ticket.getPrice());
-        ticketService.addTicket(ticket);
-        return "redirect:/admin/tickets";
+        Optional<Ticket> ticket = ticketService.getTicketById(id);
+        if(ticket.isPresent()) {
+            model.addAttribute("ticket", ticket.get());
+            return "ticketAddPage";
+        }
+        else
+            return "404";
     }
 
     @GetMapping("/admin/tickets/delete/{id}")

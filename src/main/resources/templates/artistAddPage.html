@@ -40,7 +40,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <form th:action="@{/admin/artists/add}" method="post" th:object="${artists}">
+            <form th:action="@{/admin/artists/add}" method="post" th:object="${artist}">
                 <input type="hidden" name="id"  th:field="*{id}">
                 <div class="form-group">
                     <label for="knownAs">Nickname</label>
