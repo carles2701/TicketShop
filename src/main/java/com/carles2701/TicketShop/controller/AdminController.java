@@ -99,7 +99,7 @@ public class AdminController {
         return "redirect:/admin/tickets";
     }
 
-    @GetMapping("/admin/ticket/update/{id}")
+    @GetMapping("/admin/tickets/update/{id}")
     public String updateTicket(@PathVariable int id, Model model){
         Optional<Ticket> ticket = ticketService.getTicketById(id);
         if(ticket.isPresent()) {

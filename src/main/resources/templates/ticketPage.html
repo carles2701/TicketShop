@@ -65,8 +65,8 @@
             <td th:text="${ticket.date_day}"></td>
             <td th:text="${ticket.price}"></td>
 
-            <td><a href="" th:href="@{/admin/ticket/delete/{id}(id=${ticket.id})}" class="btn btn-danger">Delete Event from DB</a></td>
-            <td><a href="" th:href="@{/admin/ticket/update/{id}(id=${ticket.id})}" class="btn btn-warning">Modify Event</a></td>
+            <td><a href="" th:href="@{/admin/tickets/delete/{id}(id=${ticket.id})}" class="btn btn-danger">Delete Event from DB</a></td>
+            <td><a href="" th:href="@{/admin/tickets/update/{id}(id=${ticket.id})}" class="btn btn-warning">Modify Event</a></td>
 
         </tr>
         </tbody>
