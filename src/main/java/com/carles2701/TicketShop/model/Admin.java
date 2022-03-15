@@ -2,11 +2,11 @@ package com.carles2701.TicketShop.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "admins")
 public class Admin {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "admin_id")
     private int id;
     @Column(nullable = false)

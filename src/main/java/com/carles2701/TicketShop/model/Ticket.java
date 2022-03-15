@@ -2,14 +2,15 @@ package com.carles2701.TicketShop.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "tickets")
 public class Ticket {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ticket_id")
     private int id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "artist_id", referencedColumnName = "artist_id")
+    @JoinColumn(name = "artist_id", nullable = false)
     private Artist artist;
     @Column(nullable = false)
     private String place;

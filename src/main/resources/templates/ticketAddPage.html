@@ -45,10 +45,10 @@
                 <div class="form-group">
                     <label for="artist">Select Artist</label>
                     <select class="form-control" th:field="*{artist}" id="artist">
-                        <option th:each="artist :${artists}"
-                                th:value="${artist.id}"
-                                th:text="${artist.knownAs}"
-                        >
+                        <option th:each="art :${artist}"
+                                th:value="${art.id}"
+                                th:text="${art.knownAs}"
+                        ></option>
                         </select>
                     </div>
 
@@ -60,22 +60,22 @@
                 </div>
                 <div class="form-group">
                     <label for="price">Price (PLN)</label>
-                    <input type="number" class="form-control" required th:field="*{price}" name="price" id="price"
+                    <input type="number" min="0.01" step="0.01" class="form-control" required th:field="*{price}" name="price" id="price"
                            placeholder="Price">
                 </div>
                 <div class="form-group">
                     <label for="date_year">Year</label>
-                    <input type="number" class="form-control" required th:field="*{date_year}" name="date_year" id="date_year"
+                    <input type="number" min="1900" step="1" class="form-control" required th:field="*{date_year}" name="date_year" id="date_year"
                            placeholder="2022">
                 </div>
                 <div class="form-group">
                     <label for="date_month">Month</label>
-                    <input type="number" class="form-control" required th:field="*{date_month}" name="date_month" id="date_month"
+                    <input type="number" min="1" step="1" class="form-control" required th:field="*{date_month}" name="date_month" id="date_month"
                            placeholder="Month of event">
                 </div>
                 <div class="form-group">
                     <label for="date_day">Day</label>
-                    <input type="number" class="form-control" required th:field="*{date_day}" name="date_day" id="date_day"
+                    <input type="number" min="1" step="1" class="form-control" required th:field="*{date_day}" name="date_day" id="date_day"
                            placeholder="Day of event">
                 </div>
             </div>

@@ -58,7 +58,7 @@
 
         <tr th:each="ticket, iStat : ${tickets}">
             <th scope="row" th:text="${iStat.index + 1}"></th>
-            <td th:text="${ticket.artist}"></td>
+            <td th:text="${ticket.artist.knownAs}"></td>
             <td th:text="${ticket.place}"></td>
             <td th:text="${ticket.date_year}"></td>
             <td th:text="${ticket.date_month}"></td>

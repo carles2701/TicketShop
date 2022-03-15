@@ -2,11 +2,11 @@ package com.carles2701.TicketShop.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "artists")
 public class Artist {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "artist_id")
     private int id;
     @Column(nullable = false)
