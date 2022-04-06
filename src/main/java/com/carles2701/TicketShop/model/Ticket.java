@@ -1,5 +1,7 @@
 package com.carles2701.TicketShop.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity(name = "tickets")
@@ -9,7 +11,7 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ticket_id")
     private int id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "artist_id", nullable = false)
     private Artist artist;
     @Column(nullable = false)
@@ -92,4 +94,5 @@ public class Ticket {
     public void setPrice(double price) {
         this.price = price;
     }
+
 }
