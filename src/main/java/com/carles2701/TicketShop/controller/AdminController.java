@@ -103,7 +103,7 @@ public class AdminController {
     public String updateTicket(@PathVariable int id, Model model){
         Optional<Ticket> ticket = ticketService.getTicketById(id);
         if(ticket.isPresent()) {
-            model.addAttribute("artist",artistService.getAllArtists());
+            model.addAttribute("artists",artistService.getAllArtists());
             model.addAttribute("ticket",ticket);
             return "ticketAddPage";
         }

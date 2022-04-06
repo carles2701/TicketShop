@@ -43,12 +43,11 @@
         <div class="row">
             <div class="col-sm-5">
                 <div class="form-group">
-                    <label for="artist">Select Artist</label>
-                    <select class="form-control" th:field="*{artist}" id="artist">
-                        <option th:each="art :${artist}"
-                                th:value="${art.id}"
-                                th:text="${art.knownAs}"
-                        ></option>
+                    <label for="artists">Select Artist</label>
+                    <select class="form-control" id="artists">
+                        <option th:each="artist :${artists}"
+                                th:text="${artist.knownAs}"
+                        />
                         </select>
                     </div>
 
