@@ -6,6 +6,7 @@ import com.carles2701.TicketShop.service.ArtistService;
 import com.carles2701.TicketShop.service.TicketService;
 import com.carles2701.TicketShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -48,7 +49,7 @@ public class AdminController {
         return "artistAddPage";
     }
 
-    @PostMapping("/admin/artists/add")
+    @PostMapping(value = "/admin/artists/add")
     public String postArtistsAdd(@ModelAttribute("artist") Artist artist,
                                  @RequestParam("artistImage")MultipartFile multipartFile,
                                  @RequestParam("imgName")String photoName) throws IOException {

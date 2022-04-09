@@ -40,7 +40,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <form th:action="@{/admin/artists/add}" method="post" th:object="${artist}">
+            <form th:action="@{/admin/artists/add}" method="post" th:object="${artist}" enctype="multipart/form-data">
                 <input type="hidden" name="id"  th:field="*{id}">
                 <div class="form-group">
                     <label for="knownAs">Nickname</label>
@@ -48,9 +48,9 @@
                     <label for="genre">Music Genre</label>
                     <input type="text" class="form-control" required th:field="*{genre}" name="genre" id="genre"  placeholder="Enter Music Genre">
                     <label for="genre">Artist photo</label>
-                    <input type="file" class="form-control" name="artistImage" id="artistImage" accept="image/jpeg, image/png">
-                    <img height="100px" width="100px" th:src="@{${'/images/' + artist.imageName}}" style="margin-top: 20px" alt=" ">
-                    <input type="hidden" name="imgName" th:value="${artist.imageName}">
+                    <input type="file"  class="form-control" name="artistImage" id="artistImage" accept="image/jpeg, image/png">
+                    <img id="imgPreview" height="100px" width="100px" th:src="@{${'/images/' + artist.imageName}}" style="margin-top: 20px" alt=" ">
+                    <input method="POST" type="hidden" name="imgName" th:value="${artist.imageName}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
