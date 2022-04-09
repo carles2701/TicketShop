@@ -8,11 +8,13 @@ import com.carles2701.TicketShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 @Controller
@@ -27,6 +29,7 @@ public class AdminController {
     @Autowired
     UserService userService;
 
+    public static String uploadDirection = System.getProperty("user.dir") + "src/main/resources/static/images";
 
     @GetMapping("/admin")
     public String adminHomePage(){
@@ -46,7 +49,20 @@ public class AdminController {
     }
 
     @PostMapping("/admin/artists/add")
-    public String postArtistsAdd(@ModelAttribute("artist") Artist artist){
+    public String postArtistsAdd(@ModelAttribute("artist") Artist artist,
+                                 @RequestParam("artistImage")MultipartFile multipartFile,
+                                 @RequestParam("imgName")String photoName) throws IOException {
+        String UID_Image;
+        if(multipartFile.isEmpty()){
+            UID_Image = multipartFile.getOriginalFilename();
+            Path file_name_path = Paths.get(uploadDirection, UID_Image);
+            Files.write(file_name_path, multipartFile.getBytes());
+        }
+        else {
+            UID_Image = photoName;
+        }
+        artist.setImageName(UID_Image);
+
         artistService.addArtist(artist);
         return "redirect:/admin/artists";
     }

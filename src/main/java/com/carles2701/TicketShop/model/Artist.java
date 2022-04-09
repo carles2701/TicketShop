@@ -13,15 +13,18 @@ public class Artist {
     private String knownAs;
     @Column(nullable = false)
     private String genre;
+    @Column(nullable = false)
+    private String imageName;
 
     public Artist(){
 
     }
 
-    public Artist(int id, String knownAs, String genre) {
+    public Artist(int id, String knownAs, String genre, String imageName) {
         this.id = id;
         this.knownAs = knownAs;
         this.genre = genre;
+        this.imageName = imageName;
     }
 
     public int getId() {
@@ -46,5 +49,13 @@ public class Artist {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }
