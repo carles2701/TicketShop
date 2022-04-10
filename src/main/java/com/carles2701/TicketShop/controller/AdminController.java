@@ -6,7 +6,6 @@ import com.carles2701.TicketShop.service.ArtistService;
 import com.carles2701.TicketShop.service.TicketService;
 import com.carles2701.TicketShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +29,7 @@ public class AdminController {
     @Autowired
     UserService userService;
 
-    public static String uploadDirection = System.getProperty("user.dir") + "src/main/resources/static/images";
+    public static String uploadDirection = System.getProperty("user.dir") + "/src/main/resources/static/images";
 
     @GetMapping("/admin")
     public String adminHomePage(){
@@ -54,7 +53,7 @@ public class AdminController {
                                  @RequestParam("artistImage")MultipartFile multipartFile,
                                  @RequestParam("imgName")String photoName) throws IOException {
         String UID_Image;
-        if(multipartFile.isEmpty()){
+        if(!multipartFile.isEmpty()){
             UID_Image = multipartFile.getOriginalFilename();
             Path file_name_path = Paths.get(uploadDirection, UID_Image);
             Files.write(file_name_path, multipartFile.getBytes());

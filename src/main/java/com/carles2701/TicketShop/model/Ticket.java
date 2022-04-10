@@ -95,4 +95,16 @@ public class Ticket {
         this.price = price;
     }
 
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", artist=" + artist +
+                ", place='" + place + '\'' +
+                ", date_year='" + date_year + '\'' +
+                ", date_month='" + date_month + '\'' +
+                ", date_day='" + date_day + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

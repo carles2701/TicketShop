@@ -16,7 +16,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/logo.png}"  src="../static/logo.png" width="auto" height="40" class="d-inline-block align-top" alt="" />
+            <img th:src="@{/logo.png}"  width="auto" height="40" class="d-inline-block align-top" alt="" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,6 +45,7 @@
         <tr>
             <th scope="col">Lp</th>
             <th scope="col">Artist Nickname</th>
+            <th scope="col"></th>
             <th scope="col">Music Genre</th>
             <th scope="col">Delete</th>
             <th scope="col">Update</th>
@@ -53,9 +54,10 @@
         <tbody>
 
         <tr th:each="artist, iStat : ${artists}">
-            <th scope="row" th:text="${iStat.index + 1}">1</th>
-            <td th:text="${artist.knownAs}">Taco Hemingway</td>
-            <td th:text="${artist.genre}">Hip Hop</td>
+            <th scope="row" th:text="${iStat.index + 1}"></th>
+            <td th:text="${artist.knownAs}"></td>
+            <td><img height="100px" width="100px"  th:src="@{${'/images/' + artist.imageName}}"></td>
+            <td th:text="${artist.genre}"></td>
 
             <td><a href="" th:href="@{/admin/artists/delete/{id}(id=${artist.id})}" class="btn btn-danger">Delete Artist from DB</a></td>
             <td><a href="" th:href="@{/admin/artists/update/{id}(id=${artist.id})}" class="btn btn-warning">Modify Artist</a></td>

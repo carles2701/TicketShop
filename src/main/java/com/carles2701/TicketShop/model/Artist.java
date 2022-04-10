@@ -58,4 +58,14 @@ public class Artist {
     public void setImageName(String imageName) {
         this.imageName = imageName;
     }
+
+    @Override
+    public String toString() {
+        return "Artist{" +
+                "id=" + id +
+                ", knownAs='" + knownAs + '\'' +
+                ", genre='" + genre + '\'' +
+                ", imageName='" + imageName + '\'' +
+                '}';
+    }
 }

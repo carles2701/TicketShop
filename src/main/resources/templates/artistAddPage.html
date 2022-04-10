@@ -47,10 +47,10 @@
                     <input type="text" class="form-control" required th:field="*{knownAs}" name="knownAs" id="knownAs"  placeholder="Enter Artistic Nickname">
                     <label for="genre">Music Genre</label>
                     <input type="text" class="form-control" required th:field="*{genre}" name="genre" id="genre"  placeholder="Enter Music Genre">
-                    <label for="genre">Artist photo</label>
+                    <label for="artistImage">Artist photo</label>
                     <input type="file"  class="form-control" name="artistImage" id="artistImage" accept="image/jpeg, image/png">
-                    <img id="imgPreview" height="100px" width="100px" th:src="@{${'/images/' + artist.imageName}}" style="margin-top: 20px" alt=" ">
-                    <input method="POST" type="hidden" name="imgName" th:value="${artist.imageName}">
+                    <img height="100px" width="100px" th:src="@{${'/images/' + artist.imageName}}" style="margin-top: 20px" alt=" ">
+                    <input type="hidden" name="imgName" th:value="${artist.getImageName()}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -67,5 +67,14 @@
         <li class="list-inline-item"><a href="https://www.linkedin.com/in/karol-bagi%C5%84ski-bb80861a8/"><i class="fa fa-linkedin-square" style="font-size:36px;color:blue"></i></a></li>
         <li class="list-inline-item"><a href="mailto:carles2701@gmail.com"><i class="fa fa-google" style="font-size:36px;color:red"></i></a></li>
     </ul>
+
 </footer>
+
 </html>
+
+
+
+
+
+
+
