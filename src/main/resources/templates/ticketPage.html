@@ -45,6 +45,7 @@
         <tr>
             <th scope="col">Lp</th>
             <th scope="col">Artist's Nickname</th>
+            <th scope="col"></th>
             <th scope="col">Place</th>
             <th scope="col">Year</th>
             <th scope="col">Month</th>
@@ -59,6 +60,7 @@
         <tr th:each="ticket, iStat : ${tickets}">
             <th scope="row" th:text="${iStat.index + 1}"></th>
             <td th:text="${ticket.artist.knownAs}"></td>
+            <td><img src="" height="100px" width="100px"  th:value="" th:src="@{${'/static/images/' + ticket.artist.imageName}}"></td>
             <td th:text="${ticket.place}"></td>
             <td th:text="${ticket.date_year}"></td>
             <td th:text="${ticket.date_month}"></td>

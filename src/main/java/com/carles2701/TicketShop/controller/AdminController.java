@@ -127,28 +127,6 @@ public class AdminController {
             return "404";
     }
 
-
-    /*
-    @GetMapping("/admin/ticket/update/{id}")
-    public String updateTicket(@PathVariable int id, Model model){
-        Ticket ticket = ticketService.getTicketById(id).get();
-        Ticket newTicket = new Ticket();
-        newTicket.setId(ticket.getId());
-        newTicket.setArtist(ticket.getArtist());
-        newTicket.setDate_day(ticket.getDate_day());
-        newTicket.setDate_month(ticket.getDate_month());
-        newTicket.setPlace(ticket.getPlace());
-        newTicket.setPrice(ticket.getPrice());
-        newTicket.setDate_year(ticket.getDate_year());
-
-        model.addAttribute("artist",artistService.getAllArtists());
-        model.addAttribute("ticket",newTicket);
-
-        return "ticketPage";
-    }
-
-     */
-
     @GetMapping("/admin/tickets/delete/{id}")
     public String deleteTicket(@PathVariable int id){
         ticketService.removeTicketById(id);

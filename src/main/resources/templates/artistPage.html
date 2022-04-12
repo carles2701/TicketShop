@@ -56,9 +56,10 @@
         <tr th:each="artist, iStat : ${artists}">
             <th scope="row" th:text="${iStat.index + 1}"></th>
             <td th:text="${artist.knownAs}"></td>
-            <td><img height="100px" width="100px"  th:src="@{${'/images/' + artist.imageName}}"></td>
+            <td><img height="100px" width="100px" th:value="${artist.getId()}"
+                                                  th:text="${artist.getKnownAs()}"
+                                                  th:src="@{${'/images/' + artist.getImageName()}}"></td>
             <td th:text="${artist.genre}"></td>
-
             <td><a href="" th:href="@{/admin/artists/delete/{id}(id=${artist.id})}" class="btn btn-danger">Delete Artist from DB</a></td>
             <td><a href="" th:href="@{/admin/artists/update/{id}(id=${artist.id})}" class="btn btn-warning">Modify Artist</a></td>
 
