@@ -45,7 +45,6 @@
         <tr>
             <th scope="col">Lp</th>
             <th scope="col">Artist's Nickname</th>
-            <th scope="col"></th>
             <th scope="col">Place</th>
             <th scope="col">Year</th>
             <th scope="col">Month</th>
@@ -60,7 +59,6 @@
         <tr th:each="ticket, iStat : ${tickets}">
             <th scope="row" th:text="${iStat.index + 1}"></th>
             <td th:text="${ticket.artist.knownAs}"></td>
-            <td><img src="" height="100px" width="100px"  th:value="" th:src="@{${'/static/images/' + ticket.artist.imageName}}"></td>
             <td th:text="${ticket.place}"></td>
             <td th:text="${ticket.date_year}"></td>
             <td th:text="${ticket.date_month}"></td>
@@ -77,7 +75,7 @@
 
 </body>
 <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="text-center text-muted">&copy; 2022 TicketShop</br>Created by carles2701</p>
+    <p class="text-center text-muted">2022 TicketShop</br>Created by carles2701</p>
     <ul class="list-inline">
         <li class="list-inline-item"><a href="https://github.com/carles2701"><i class="fa fa-github" style="font-size:36px;color:black"></i></a></li>
         <li class="list-inline-item"><a href="https://www.linkedin.com/in/karol-bagi%C5%84ski-bb80861a8/"><i class="fa fa-linkedin-square" style="font-size:36px;color:blue"></i></a></li>
