@@ -1,42 +1,26 @@
-package com.carles2701.TicketShop.model;
+package com.carles2701.TicketShop.entityDTO;
 
-import org.hibernate.annotations.Cascade;
-
-import javax.persistence.*;
-
-@Entity(name = "tickets")
-public class Ticket {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ticket_id")
+public class TicketDTO {
     private int id;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "artist_id", nullable = false)
-    private Artist artist;
-    @Column(nullable = false)
+    private int artistId;
     private String place;
-    @Column(nullable = false)
     private String date_year;
-    @Column(nullable = false)
     private String date_month;
-    @Column(nullable = false)
     private String date_day;
-    @Column(nullable = false)
     private double price;
 
-    public Ticket(){
-
-    }
-
-    public Ticket(int id, Artist artist, String place, String date_year, String date_month, String date_day, double price) {
+    public TicketDTO(int id, int artistId, String place, String date_year, String date_month, String date_day, double price) {
         this.id = id;
-        this.artist = artist;
+        this.artistId = artistId;
         this.place = place;
         this.date_year = date_year;
         this.date_month = date_month;
         this.date_day = date_day;
         this.price = price;
+    }
+
+    public TicketDTO() {
+
     }
 
     public int getId() {
@@ -47,12 +31,12 @@ public class Ticket {
         this.id = id;
     }
 
-    public Artist getArtist() {
-        return artist;
+    public int getArtistId() {
+        return artistId;
     }
 
-    public void setArtist(Artist artist) {
-        this.artist = artist;
+    public void setArtistId(int artistId) {
+        this.artistId = artistId;
     }
 
     public String getPlace() {
@@ -97,9 +81,9 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
+        return "TicketDTO{" +
                 "id=" + id +
-                ", artist=" + artist +
+                ", artistId=" + artistId +
                 ", place='" + place + '\'' +
                 ", date_year='" + date_year + '\'' +
                 ", date_month='" + date_month + '\'' +

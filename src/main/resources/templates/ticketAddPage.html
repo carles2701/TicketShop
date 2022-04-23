@@ -39,17 +39,17 @@
 </nav>
 <div class="container">
     <h3>Add a new event</h3>
-    <form th:action="@{/admin/tickets/add}" method="post" th:object="${ticket}" enctype="multipart/form-data">
+    <form th:action="@{/admin/tickets/add}" method="post" th:object="${ticketDTO}" enctype="multipart/form-data">
         <div class="row">
             <div class="col-sm-5">
                 <div class="form-group">
                     <label for="artist">Select Artist</label>
-                    <select class="form-control" id="artist" name="artist">
+                    <select class="form-control" th:field="*{artistId}" id="artist" name="artist">
                         <option th:each="artist :${artists}"
-                                th:value="${artist.getId()}"
-                                th:text="${artist.getKnownAs()}"
-                        />
-                        </select>
+                                th:value="${artist.id}"
+                                th:text="${artist.knownAs}"
+                        >
+                    </select>
                     </div>
 
                 <input type="hidden" name="id" th:field="*{id}">

@@ -43,6 +43,7 @@
     <table class="table">
         <thead class="thead-light">
         <tr>
+            <th scope="col">Photo</th>
             <th scope="col">Lp</th>
             <th scope="col">Artist's Nickname</th>
             <th scope="col">Place</th>
@@ -57,6 +58,7 @@
         <tbody>
 
         <tr th:each="ticket, iStat : ${tickets}">
+            <th><img height="100px" width="100px" th:src="@{${'/images/' + ticket.artist.getImageName()}}"></th>
             <th scope="row" th:text="${iStat.index + 1}"></th>
             <td th:text="${ticket.artist.knownAs}"></td>
             <td th:text="${ticket.place}"></td>
@@ -64,11 +66,11 @@
             <td th:text="${ticket.date_month}"></td>
             <td th:text="${ticket.date_day}"></td>
             <td th:text="${ticket.price}"></td>
-
             <td><a href="" th:href="@{/admin/tickets/delete/{id}(id=${ticket.id})}" class="btn btn-danger">Delete Event from DB</a></td>
             <td><a href="" th:href="@{/admin/tickets/update/{id}(id=${ticket.id})}" class="btn btn-warning">Modify Event</a></td>
 
         </tr>
+
         </tbody>
     </table>
 </div>

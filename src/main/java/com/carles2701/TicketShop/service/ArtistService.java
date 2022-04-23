@@ -1,6 +1,6 @@
 package com.carles2701.TicketShop.service;
 
-import com.carles2701.TicketShop.model.Artist;
+import com.carles2701.TicketShop.entity.Artist;
 import com.carles2701.TicketShop.repository.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

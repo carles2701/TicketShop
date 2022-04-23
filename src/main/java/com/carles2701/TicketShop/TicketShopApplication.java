@@ -1,8 +1,5 @@
 package com.carles2701.TicketShop;
 
-import com.carles2701.TicketShop.model.Artist;
-import com.carles2701.TicketShop.repository.ArtistRepository;
-import com.carles2701.TicketShop.service.ArtistService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

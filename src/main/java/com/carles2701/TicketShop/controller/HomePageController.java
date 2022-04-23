@@ -3,7 +3,6 @@ package com.carles2701.TicketShop.controller;
 import com.carles2701.TicketShop.globalCart.ShoppingCart;
 import com.carles2701.TicketShop.service.ArtistService;
 import com.carles2701.TicketShop.service.TicketService;
-import com.carles2701.TicketShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +17,6 @@ public class HomePageController {
 
     @Autowired
     TicketService ticketService;
-
-    @Autowired
-    UserService userService;
 
     @GetMapping({"/","/home","/index"})
     public String homePage(Model model){

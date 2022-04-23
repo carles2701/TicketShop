@@ -140,3 +140,11 @@ delete IMAGE [42102-200]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "IMAGE" nie istnieje
 Table "IMAGE" not found; SQL statement:
 delete image from artists [42102-200]
+2022-04-21 20:31:15 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DELETE *[*] FROM ARTISTS"; oczekiwano "identifier"
+Syntax error in SQL statement "DELETE *[*] FROM ARTISTS"; expected "identifier"; SQL statement:
+delete * FROM ARTISTS [42001-200]
+2022-04-23 15:09:42 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DELETE TABLE[*] ADMINS"; oczekiwano "identifier"
+Syntax error in SQL statement "DELETE TABLE[*] ADMINS"; expected "identifier"; SQL statement:
+delete table admins [42001-200]

@@ -1,4 +1,4 @@
-package com.carles2701.TicketShop.model;
+package com.carles2701.TicketShop.entity;
 
 import javax.persistence.*;
 

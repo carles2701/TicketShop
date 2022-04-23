@@ -1,11 +1,12 @@
 package com.carles2701.TicketShop.controller;
 
-import com.carles2701.TicketShop.model.Artist;
-import com.carles2701.TicketShop.model.Ticket;
+import com.carles2701.TicketShop.entity.Artist;
+import com.carles2701.TicketShop.entity.Ticket;
+import com.carles2701.TicketShop.entityDTO.TicketDTO;
 import com.carles2701.TicketShop.service.ArtistService;
 import com.carles2701.TicketShop.service.TicketService;
-import com.carles2701.TicketShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,9 +26,6 @@ public class AdminController {
 
     @Autowired
     TicketService ticketService;
-
-    @Autowired
-    UserService userService;
 
     public static String uploadDirection = System.getProperty("user.dir") + "/src/main/resources/static/images";
 
@@ -84,18 +82,6 @@ public class AdminController {
             return "404";
     }
 
-    @GetMapping("/admin/users")
-    public String getUsers(Model model){
-        model.addAttribute("existing_users", userService.getAllUsers());
-        return "userPage";
-    }
-
-    @GetMapping("/admin/users/delete/{id}")
-    public String deleteUser(@PathVariable int id){
-        userService.removeUserById(id);
-        return "redirect:/admin/users";
-    }
-
     @GetMapping("/admin/tickets")
     public String getTickets(Model model){
         model.addAttribute("tickets", ticketService.getAllTickets());
@@ -104,27 +90,43 @@ public class AdminController {
 
     @GetMapping("/admin/tickets/add")
     public String getAddTicket(Model model){
-        model.addAttribute("ticket", new Ticket());
+        model.addAttribute("ticketDTO", new TicketDTO());
         model.addAttribute("artists", artistService.getAllArtists());
         return "ticketAddPage";
     }
 
     @PostMapping("/admin/tickets/add")
-    public String postAddTicket(@ModelAttribute("ticket") Ticket ticket){
+    public String postAddTicket(@ModelAttribute("ticketDTO") TicketDTO ticketDTO,
+                                Model model){
+        Ticket ticket = new Ticket();
+        ticket.setId(ticketDTO.getId());
+        ticket.setArtist(artistService.getArtistById(ticketDTO.getArtistId()).get());
+        ticket.setPlace(ticketDTO.getPlace());
+        ticket.setDate_year(ticketDTO.getDate_year());
+        ticket.setDate_month(ticketDTO.getDate_month());
+        ticket.setDate_day(ticketDTO.getDate_day());
+        ticket.setPrice(ticketDTO.getPrice());
         ticketService.addTicket(ticket);
         return "redirect:/admin/tickets";
     }
 
     @GetMapping("/admin/tickets/update/{id}")
-    public String updateTicket(@PathVariable int id, Model model){
-        Optional<Ticket> ticket = ticketService.getTicketById(id);
-        if(ticket.isPresent()) {
-            model.addAttribute("artists",artistService.getAllArtists());
-            model.addAttribute("ticket",ticket);
-            return "ticketAddPage";
-        }
-        else
-            return "404";
+    public String updateTicket(@PathVariable int id, Model model) {
+        Ticket ticket = ticketService.getTicketById(id).get();
+        TicketDTO ticketDTO = new TicketDTO();
+        ticketDTO.setId(ticketDTO.getId());
+        ticketDTO.setArtistId(ticket.getArtist().getId());
+        ticketDTO.setPlace(ticket.getPlace());
+        ticketDTO.setDate_year(ticket.getDate_year());
+        ticketDTO.setDate_month(ticket.getDate_month());
+        ticketDTO.setDate_day(ticket.getDate_day());
+        ticketDTO.setPrice(ticket.getPrice());
+        ticketService.addTicket(ticket);
+
+        model.addAttribute("artists", artistService.getAllArtists());
+        model.addAttribute("ticketDTO", ticketDTO);
+
+        return "ticketAddPage";
     }
 
     @GetMapping("/admin/tickets/delete/{id}")

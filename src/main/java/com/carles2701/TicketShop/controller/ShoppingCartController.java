@@ -1,7 +1,7 @@
 package com.carles2701.TicketShop.controller;
 
 import com.carles2701.TicketShop.globalCart.ShoppingCart;
-import com.carles2701.TicketShop.model.Ticket;
+import com.carles2701.TicketShop.entity.Ticket;
 import com.carles2701.TicketShop.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
