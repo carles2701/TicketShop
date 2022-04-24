@@ -15,12 +15,10 @@
 
 </head>
 <body>
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/logo.png}"  src="../static/logo.png" width="auto" height="40" class="d-inline-block align-top" alt="" />
+            <img th:src="@{/logo.png}" th:href="@{/index}" href="#" src="../static/logo.png" width="auto" height="40" class="d-inline-block align-top" alt="" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,20 +30,15 @@
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/}" href="#">Home</a>
                 </li>
+                </li>
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/login}" href="#">Login</a>
+                    <a class="nav-link" th:href="@{/cart}" href="#">Shopping Cart</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/logout}" href="#">Logout</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/cart}" href="#">Cart</a>
-                </li>
-                <li class="nav-item active">
-                    <span class="nav-link" th:text="${cartCount}"></span>
+                    <span class="nav-link" th:text="${size_shopping_cart}">0</span>
                 </li>
             </ul>
 

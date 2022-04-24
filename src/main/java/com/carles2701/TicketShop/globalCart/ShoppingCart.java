@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    public static List<Ticket> shoppingCart;
+    public static List<Ticket> cart;
     static {
-        shoppingCart = new ArrayList<Ticket>();
+        cart = new ArrayList<Ticket>();
     }
 }
