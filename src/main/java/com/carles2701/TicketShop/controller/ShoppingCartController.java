@@ -7,6 +7,7 @@ import com.carles2701.TicketShop.entity.Ticket;
 import com.carles2701.TicketShop.service.ArtistService;
 import com.carles2701.TicketShop.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,13 +25,13 @@ public class ShoppingCartController {
     @GetMapping("/addToCart/{id}")
     public String addToShoppingCart(@PathVariable int id,
                                     Model model){
-        model.addAttribute("tickets", ticketService.getAllTickets());
         ShoppingCart.cart.add(ticketService.getTicketById(id).get());
         return "redirect:/shop";
     }
 
     @GetMapping("/cart")
-    public String getShopCart(Model model){
+    public String getShopCart(Model model,
+                              @ModelAttribute("artist")Artist artist){
         model.addAttribute("size_shopping_cart", ShoppingCart.cart.size());
         model.addAttribute("all_elements_of_cart", ShoppingCart.cart.stream().mapToDouble(Ticket::getPrice).sum());
         model.addAttribute("cart", ShoppingCart.cart);
