@@ -61,11 +61,10 @@
                                     <div>
                                         <div class="d-flex justify-content-between">
                                             <div>
-                                                <p class="mb-3 text-uppercase small"><span th:text="${item.place}"></span></p>
-                                                <p class="mb-3 text-uppercase small"><span th:text="${item.date_day}"> / </span></p>
-                                                <p class="mb-3 text-uppercase small"><span th:text="${item.date_month}"> / </span></p>
-                                                <p class="mb-3 text-uppercase small"><span th:text="${item.date_year}"> / </span></p>
-
+                                                <p class="mb-3 text-uppercase small"><img height="100px" width="100px" th:src="@{${'/images/' + item.getArtist().getImageName()}}"></p>
+                                                <p class="mb-3 text-uppercase small"><span th:text="${item.getArtist().getKnownAs()}"></span></p>
+                                                <p class="mb-3 text-uppercase small"><span th:text="${item.getPlace()}"></span></p>
+                                                <p class="mb-3 text-uppercase small"><span th:text="${item.date_day + '-' + item.date_month + '-' + item.date_year}"> / </span></p>
                                             </div>
                                         </div>
                                         <div class="mt-5 d-flex justify-content-between align-items-center">

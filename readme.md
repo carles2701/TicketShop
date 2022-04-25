@@ -18,6 +18,8 @@ spring.servlet.multipart.enabled=true
 spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
 
+spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
+
 server.port=8080
 
 #Page Templates
